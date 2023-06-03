@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "build": "esbuild ./packages/scraper/src/index.ts --bundle --platform=node --outfile=dist/index.js --target=es2019"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.115",
+    "esbuild": "^0.17.19",
+    "vitest": "^0.31.4"
+  }
 }
