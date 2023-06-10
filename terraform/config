@@ -1,4 +1,4 @@
 region = "eu-west-2"
-bucket = "569938948469-tfstate
+bucket = "569938948469-tfstate"
 key = "services/freecycle-scraper"
 dynamodb_table = "569938948469-tfstate-lock"

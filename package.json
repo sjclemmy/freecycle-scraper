@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
-    "build": "esbuild ./packages/scraper/src/index.ts --bundle --platform=node --outfile=dist/index.js --target=es2019"
+    "build": "esbuild ./packages/scraper/src/index.ts --bundle --platform=node --outfile=dist/index.js --target=es2019",
+    "package": "npm run build && zip -rj ./dist/output.zip ./dist/index.js"
   },
   "keywords": [],
   "author": "",
