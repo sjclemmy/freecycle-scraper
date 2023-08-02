@@ -5,4 +5,7 @@ export default defineConfig({
     globals: true,
     testTimeout: 20000,
   },
+  define: {
+    'import.meta.env.USERNAME': JSON.stringify(process.env.USERNAME),
+  },
 })
