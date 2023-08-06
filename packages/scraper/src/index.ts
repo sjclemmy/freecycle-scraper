@@ -1,5 +1,5 @@
-import fs from 'fs'
 import https from 'https'
+import { parse } from './parse'
 
 const getOptions = {
   hostname: 'www.freecycle.org',
@@ -21,12 +21,12 @@ const postOptions = {
   },
 }
 
-const getLatestPosts = async (cookie: string) =>
+const getLatestPosts = async (cookie: string): Promise<string> =>
   new Promise((resolve, reject) => {
     const req = https.get(
       { ...getOptions, headers: { ...getOptions.headers, Cookie: cookie } },
       (res) => {
-        let data = ''
+        let data: string = ''
 
         res.on('data', (d) => {
           data += d
@@ -66,7 +66,7 @@ const getLoginCookie = async (): Promise<string> =>
 const handler = async () => {
   const cookie = await getLoginCookie()
   const latestPosts = await getLatestPosts(cookie.split(';')[0] as string)
-  fs.writeFileSync('dist/posts.html', latestPosts as string)
-  return { statusCode: 200, body: 'hello world' }
+  console.log(await parse(latestPosts))
+  return { statusCode: 200, body: 'processed' }
 }
 export { handler }

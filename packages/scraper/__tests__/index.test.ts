@@ -5,7 +5,7 @@ describe('scraper', () => {
     process.env.PASSWORD = import.meta.env.VITE_PASSWORD
     expect(await handler()).toEqual({
       statusCode: 200,
-      body: 'hello world',
+      body: 'processed',
     })
   })
 })
